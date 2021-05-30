@@ -11,11 +11,15 @@ import com.example.mvvmjetpack.viewmodel.MainActivity3ViewModel
 import kotlin.random.Random
 
 class MainActivity3 : AppCompatActivity() {
-    private val tvTest: TextView = findViewById(R.id.tv_text)
+
+    private val viewModel: MainActivity3ViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main3)
-        val viewModel: MainActivity3ViewModel by viewModels()
+        val tvTest: TextView = findViewById(R.id.tv_text)
+        //另一种创建方法
+        //val viewModel: MainActivity3ViewModel = ViewModelProvider(this).get(MainActivity3ViewModel::class.java)
+
         viewModel.mCurrentText.observe(this, {
             tvTest.text = it
         })
