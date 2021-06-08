@@ -16,7 +16,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class FragmentDilog : DialogFragment() {
     var mLayoutView: View? = null
-    lateinit var tab_layout: TabLayout
+    lateinit var tab_layout: TitleTabLayout
     lateinit var vp_main: ViewPager2
     private val titles = arrayOf("1", "2", "3", "4", "5")
     private val fragmentList: ArrayList<Fragment> = ArrayList()
