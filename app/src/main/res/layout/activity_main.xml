@@ -29,5 +29,9 @@
             android:textSize="20dp"
             android:text="@{userInfo.password}"/>
 
+        <Button
+            android:id="@+id/btn_go"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </layout>

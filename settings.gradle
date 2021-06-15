@@ -1,2 +1,3 @@
 rootProject.name = "MvvmJetpack"
 include ':app'
+include ':mylibrary'
