@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity4"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="12dp"
+        android:paddingTop="5dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/left_title_tv"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical|left"
+            android:text="私募名称"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <com.example.mvvmjetpack.recyclerView.ObserverHScrollView
+            android:id="@+id/head_title_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/left_title_tv"
+            android:focusable="false"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/scroll_title_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:gravity="center"
+                android:orientation="horizontal" />
+        </com.example.mvvmjetpack.recyclerView.ObserverHScrollView>
+    </RelativeLayout>
+
+    <com.example.mvvmjetpack.recyclerView.XYZRecyclerView
+        android:id="@+id/content_rlv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+</LinearLayout>

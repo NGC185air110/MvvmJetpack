@@ -7,7 +7,6 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.example.mvvmjetpack.databinding.ActivityMainBinding
 import com.example.mvvmjetpack.model.User
-import com.example.mvvmjetpack.view.FragmentDilog
 
 @Route(path = "/test/aaa")
 class MainActivity : AppCompatActivity() {

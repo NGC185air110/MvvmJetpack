@@ -5,8 +5,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmjetpack.viewmodel.MainActivity3ViewModel
 import kotlin.random.Random
 
