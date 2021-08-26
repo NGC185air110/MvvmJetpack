@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         var user: User = User("dinglicheng", "123456")
         activityMainBinding.userInfo = user
         //FragmentDilog().show(this.supportFragmentManager,"aaa")
+        //我的Android studio 为什么没有pull
         ARouter.getInstance().build("/test/bbb").navigation()
         activityMainBinding.btnGo.setOnClickListener { ARouter.getInstance().build("/test/bbb").navigation() }
     }
