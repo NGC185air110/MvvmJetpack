@@ -13,6 +13,7 @@ class MainActivity2 : AppCompatActivity() {
     var goods: Goods? = null
     var activityMain2Binding : ActivityMain2Binding? = null
 
+    //livedata
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
