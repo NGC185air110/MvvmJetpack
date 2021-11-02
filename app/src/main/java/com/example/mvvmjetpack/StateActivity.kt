@@ -19,6 +19,7 @@ class StateActivity : AppCompatActivity() {
         var btn3: Button = findViewById(R.id.btn_activity3)
         var btn4: Button = findViewById(R.id.btn_activity4)
         var btn5: Button = findViewById(R.id.btn_activity5)
+        var btn6: Button = findViewById(R.id.btn_activity6)
         btn1.setOnClickListener {
             var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -37,6 +38,10 @@ class StateActivity : AppCompatActivity() {
         }
         btn5.setOnClickListener {
             var intent = Intent(this, MainActivity6::class.java)
+            startActivity(intent)
+        }
+        btn6.setOnClickListener {
+            var intent = Intent(this, TimerActivity::class.java)
             startActivity(intent)
         }
 
