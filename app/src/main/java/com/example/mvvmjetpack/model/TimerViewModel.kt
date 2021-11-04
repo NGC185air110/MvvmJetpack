@@ -3,7 +3,8 @@ package com.example.mvvmjetpack.model
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import java.util.*
 
 /**
@@ -21,6 +22,12 @@ class TimerViewModel(private val myContext: Application) : AndroidViewModel(myCo
     var currentSecond: Int = 0
     var onTimerChangeListener: ((a: Int) -> Unit)? = null
 
+    private val mCurrentTextPrivate: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
+
+    val mCurrentText: LiveData<Int> get() = mCurrentTextPrivate
+
     fun setLabelOnTimerChangeListener(onChick: (a: Int) -> Unit) {
         this.onTimerChangeListener = onChick
     }
@@ -32,8 +39,9 @@ class TimerViewModel(private val myContext: Application) : AndroidViewModel(myCo
             var timerTask = object : TimerTask() {
                 override fun run() {
                     currentSecond++
+                    mCurrentTextPrivate.postValue(currentSecond)//在线程里需要使用post不然就可以直接用set
                     onTimerChangeListener?.invoke(currentSecond)
-                    Log.d("context","----------是--$myContext")
+                    Log.d("context", "----------是--$myContext")
                 }
             }
             timer!!.schedule(timerTask, 1000, 1000)

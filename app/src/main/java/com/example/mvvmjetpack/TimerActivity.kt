@@ -3,10 +3,16 @@ package com.example.mvvmjetpack
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.mvvmjetpack.databinding.ActivityTimerBinding
 import com.example.mvvmjetpack.model.TimerViewModel
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
+import java.util.concurrent.ConcurrentHashMap
 import kotlin.properties.Delegates
 import kotlin.properties.ReadOnlyProperty
 import kotlin.properties.ReadWriteProperty
@@ -16,6 +22,7 @@ class TimerActivity : AppCompatActivity() {
 
     var binding: ActivityTimerBinding? = null
 
+    @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = LayoutInflater.from(this).run {
@@ -33,13 +40,17 @@ class TimerActivity : AppCompatActivity() {
     }
 
     private fun iniComponent() {
-
-        var timerViewModel: TimerViewModel = ViewModelProvider(this)[TimerViewModel::class.java]
+        //两种初始viewModel的方法
+        val timerViewModel: TimerViewModel by viewModels()
+        //var timerViewModel: TimerViewModel = ViewModelProvider(this)[TimerViewModel::class.java]
         timerViewModel.setLabelOnTimerChangeListener {
             runOnUiThread {
                 binding?.tvTime?.text = "Time:$it"
             }
         }
+        timerViewModel.mCurrentText.observe(this, {
+            binding?.tvTime1?.text = "liveData:time:$it"
+        })
         timerViewModel.startTiming()
     }
 
@@ -114,6 +125,7 @@ class TimerActivity : AppCompatActivity() {
         }
     }
 
+    @InternalCoroutinesApi
     private fun main1() {
         var b = B()
         Log.d("TGP", "${b.a}")
@@ -130,6 +142,20 @@ class TimerActivity : AppCompatActivity() {
         data = 100
         Log.d("TGP", "$data")
 
+        /*var map = ConcurrentHashMap<Any, Any>()
+        for (index in 0 until 1000) {
+            var thread0 = HashMapThread(map, "线程名1:$index")
+            thread0.start()
+            var thread1 = HashMapThread(map, "线程名2:$index")
+            thread1.start()
+        }*/
+
+        lifecycleScope.launch {
+            flow<Int> { emit(1) }.collect(object : FlowCollector<Int> {
+                override suspend fun emit(value: Int) {
+                }
+            })
+        }
     }
 
     //更快的实现属性委托类
@@ -163,4 +189,14 @@ class TimerActivity : AppCompatActivity() {
             field = value
         }
 
+    //ConcurrentHashMap和HashMap相互替换
+    class HashMapThread(var map: ConcurrentHashMap<Any, Any>, name: String) : Thread() {
+
+        override fun run() {
+            var i = Math.random() * 100000
+            map["键$i"] = "值$i"
+            map.remove("键$i")
+            Log.d("TGP", "${this.name}map的大小${map.size}")
+        }
+    }
 }
