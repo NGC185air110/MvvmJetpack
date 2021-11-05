@@ -5,6 +5,9 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.launch
 import java.util.*
 
 /**
@@ -33,19 +36,24 @@ class TimerViewModel(private val myContext: Application) : AndroidViewModel(myCo
     }
 
     fun startTiming() {
-        if (timer == null) {
-            currentSecond = 0
-            timer = Timer()
-            var timerTask = object : TimerTask() {
-                override fun run() {
-                    currentSecond++
-                    mCurrentTextPrivate.postValue(currentSecond)//在线程里需要使用post不然就可以直接用set
-                    onTimerChangeListener?.invoke(currentSecond)
-                    Log.d("context", "----------是--$myContext")
+        //当viewModel取消的时候下面代码自动回收
+        viewModelScope.launch {
+            if (timer == null) {
+                currentSecond = 0
+                timer = Timer()
+                var timerTask = object : TimerTask() {
+                    override fun run() {
+                        currentSecond++
+                        mCurrentTextPrivate.postValue(currentSecond)//在线程里需要使用post不然就可以直接用set
+                        onTimerChangeListener?.invoke(currentSecond)
+                        Log.d("context", "----------是--$myContext")
+                    }
                 }
+                timer!!.schedule(timerTask, 1000, 1000)
             }
-            timer!!.schedule(timerTask, 1000, 1000)
         }
+        LinearLayoutManager(myContext)
+
     }
 
 

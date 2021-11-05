@@ -20,6 +20,7 @@ class StateActivity : AppCompatActivity() {
         var btn4: Button = findViewById(R.id.btn_activity4)
         var btn5: Button = findViewById(R.id.btn_activity5)
         var btn6: Button = findViewById(R.id.btn_activity6)
+        var btn7: Button = findViewById(R.id.btn_activity7)
         btn1.setOnClickListener {
             var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -42,6 +43,10 @@ class StateActivity : AppCompatActivity() {
         }
         btn6.setOnClickListener {
             var intent = Intent(this, TimerActivity::class.java)
+            startActivity(intent)
+        }
+        btn7.setOnClickListener {
+            var intent = Intent(this, com.example.mvvmjetpack.MainActivity7::class.java)
             startActivity(intent)
         }
 
