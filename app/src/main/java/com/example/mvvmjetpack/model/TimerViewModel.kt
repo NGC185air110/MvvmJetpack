@@ -1,12 +1,18 @@
 package com.example.mvvmjetpack.model
 
 import android.app.Application
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.widget.EditText
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -52,9 +58,37 @@ class TimerViewModel(private val myContext: Application) : AndroidViewModel(myCo
                 timer!!.schedule(timerTask, 1000, 1000)
             }
         }
-        LinearLayoutManager(myContext)
 
     }
 
+    fun EditText.textChangeFlow(): Flow<CharSequence> = callbackFlow {
+        val watcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                s?.let { offer(it) }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+
+        }
+        addTextChangedListener(watcher)
+        awaitClose { removeTextChangedListener(watcher) }
+    }
+
+    open class Widget() {
+        @Synchronized
+        open fun doSomething() {
+        }
+    }
+
+    class LoggingWidget : Widget() {
+
+        @Synchronized
+        override fun doSomething() {
+            super.doSomething()
+        }
+
+    }
 
 }

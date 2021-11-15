@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmjetpack.databinding.ActivityTimerBinding
 import com.example.mvvmjetpack.model.TimerViewModel
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.properties.Delegates
@@ -48,6 +50,7 @@ class TimerActivity : AppCompatActivity() {
                 binding?.tvTime?.text = "Time:$it"
             }
         }
+        timerViewModel.mCurrentText.observe(this) {}
         timerViewModel.mCurrentText.observe(this, {
             binding?.tvTime1?.text = "liveData:time:$it"
         })

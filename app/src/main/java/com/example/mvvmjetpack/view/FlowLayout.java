@@ -1,6 +1,7 @@
 package com.example.mvvmjetpack.view;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.os.Build;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +85,9 @@ public class FlowLayout extends ViewGroup {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        ObjectOutputStream out;
+        ObjectInputStream input;
+
         //全显示判断
         if (allViewShow) {
             if (views.size() > 5) {
