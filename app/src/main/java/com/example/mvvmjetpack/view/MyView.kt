@@ -5,7 +5,11 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Path
+import android.text.Layout
+import android.text.StaticLayout
+import android.text.TextPaint
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 
 /**
@@ -72,8 +76,19 @@ class MyView : View {
         paint2.color = Color.RED
         paint2.style = Paint.Style.FILL
         path2.fillType = Path.FillType.EVEN_ODD
-        path2.addCircle(800f,1200f,200f,Path.Direction.CW)
-        path2.addCircle(800f,1200f,100f,Path.Direction.CW)
+        path2.addCircle(800f, 1200f, 200f, Path.Direction.CW)
+        path2.addCircle(800f, 1200f, 100f, Path.Direction.CW)
         canvas?.drawPath(path2, paint2)
+        paint1.textSize = 40f
+        paint1.isAntiAlias = true
+        canvas?.drawTextOnPath(
+            "That there's some good in this world, and it's worth fighting for.",
+            path2,
+            0f,
+            0f,
+            paint1
+        )
+
     }
+
 }

@@ -7,13 +7,16 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mvvmjetpack.databinding.ActivityMain7Binding
 import com.example.mvvmjetpack.view.FeedLayoutByDlc
 
-class MainActivity7 : AppCompatActivity() {
+class MainActivity7 : BaseActivity<ActivityMain7Binding>(ActivityMain7Binding::inflate) {
     private var index = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main7)
+
+        viewBinding.btnAdd
 
         var btnAdd = findViewById<Button>(R.id.btn_add)
         var feed = findViewById<FeedLayoutByDlc>(R.id.feed)

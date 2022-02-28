@@ -15,7 +15,11 @@ class MainActivity3ViewModel : ViewModel() {
 
 
     fun login(userName: String, passWord: String) {
-        viewModelScope.launch {  }
+        viewModelScope.launch {
+            kotlin.runCatching {
+
+            }.onSuccess {  }.onFailure {  }
+        }
         mCurrentTextPrivate.value = "$userName+++++++++++++++++++++++++$passWord"
     }
 }
