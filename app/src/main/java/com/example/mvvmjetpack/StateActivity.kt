@@ -21,6 +21,8 @@ class StateActivity : AppCompatActivity() {
         var btn5: Button = findViewById(R.id.btn_activity5)
         var btn6: Button = findViewById(R.id.btn_activity6)
         var btn7: Button = findViewById(R.id.btn_activity7)
+        var btn9: Button = findViewById(R.id.btn_activity9)
+        var btn10: Button = findViewById(R.id.btn_activity10)
         btn1.setOnClickListener {
             var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
@@ -47,6 +49,14 @@ class StateActivity : AppCompatActivity() {
         }
         btn7.setOnClickListener {
             var intent = Intent(this, com.example.mvvmjetpack.MainActivity7::class.java)
+            startActivity(intent)
+        }
+        btn9.setOnClickListener {
+            var intent = Intent(this, MainActivity9::class.java)
+            startActivity(intent)
+        }
+        btn10.setOnClickListener {
+            var intent = Intent(this, MainActivity10::class.java)
             startActivity(intent)
         }
 

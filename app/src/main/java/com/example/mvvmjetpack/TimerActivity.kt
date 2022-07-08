@@ -24,7 +24,7 @@ class TimerActivity : AppCompatActivity() {
 
     var binding: ActivityTimerBinding? = null
 
-    @InternalCoroutinesApi
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = LayoutInflater.from(this).run {
@@ -128,7 +128,8 @@ class TimerActivity : AppCompatActivity() {
         }
     }
 
-    @InternalCoroutinesApi
+
+    @OptIn(InternalCoroutinesApi::class)
     private fun main1() {
         var b = B()
         Log.d("TGP", "${b.a}")
