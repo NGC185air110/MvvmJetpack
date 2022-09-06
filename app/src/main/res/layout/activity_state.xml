@@ -1,57 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StateActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".StateActivity">
 
     <Button
         android:id="@+id/btn_activity1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="页面与数据dataBinding"/>
+        android:text="页面与数据dataBinding" />
+
     <Button
         android:id="@+id/btn_activity2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="页面与数据点击改变"/>
+        android:text="页面与数据点击改变" />
+
     <Button
         android:id="@+id/btn_activity3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="liveDate和viewModels结合"/>
+        android:text="liveDate和viewModels结合" />
+
     <Button
         android:id="@+id/btn_activity4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="viewpage2嵌套滑动"/>
+        android:text="viewpage2嵌套滑动" />
+
     <Button
         android:id="@+id/btn_activity5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="标准mvp"/>
+        android:text="标准mvp" />
+
     <Button
         android:id="@+id/btn_activity6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ViewModel"/>
+        android:text="ViewModel" />
+
     <Button
         android:id="@+id/btn_activity7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="自定义VIEWGROUP"/>
+        android:text="自定义VIEWGROUP" />
 
     <Button
         android:id="@+id/btn_activity9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SingleTop 的探索"/>
+        android:text="SingleTop 的探索" />
 
     <Button
         android:id="@+id/btn_activity10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="flow 的探索"/>
+        android:text="flow 的探索" />
+
+    <Button
+        android:id="@+id/btn_activity11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="传感器角动量" />
 </LinearLayout>
