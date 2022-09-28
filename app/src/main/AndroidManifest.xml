@@ -13,7 +13,7 @@
         <activity
             android:name=".MainActivity9"
             android:exported="false"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop" />
         <activity
             android:name=".MainActivity7"
             android:exported="false" />
@@ -37,6 +37,7 @@
         <activity android:name=".mvp.MainActivity6" />
         <activity android:name=".MainActivity10" />
         <activity android:name=".MainActivity11" />
+        <activity android:name=".MainActivity12" />
     </application>
 
 </manifest>

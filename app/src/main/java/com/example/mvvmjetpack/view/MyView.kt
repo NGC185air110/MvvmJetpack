@@ -91,4 +91,8 @@ class MyView : View {
 
     }
 
+    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+        return super.dispatchTouchEvent(event)
+    }
+
 }
