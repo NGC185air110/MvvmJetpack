@@ -30,7 +30,6 @@ class FrameLayoutMain : FrameLayout {
     //是否决定消费
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         "未处理不消费 ${this.id}".logd()
-
         return super.onTouchEvent(event)
     }
 
